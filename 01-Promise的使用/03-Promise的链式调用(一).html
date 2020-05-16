@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //重点 then中要return 回来
+    new Promise((resolve, reject) => {
+        //第一次请求
+        setTimeout(() => {
+            resolve('第一次请求')
+        }, 2000)
+    }).then(res=>{
+        console.log(res);
+        return  new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve(res+'第二次请求')
+            }, 2000)
+        })
+    }).then(res=>{
+        console.log(res);
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve(res+'第三次请求')
+            }, 2000)
+        })
+    }).then(res=>{
+        console.log(res)
+        return new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve(res+'第四次请求')
+            }, 2000)
+        })
+    }).then(res=>{
+        console.log(res);
+    })
+
+</script>
+</body>
+</html>

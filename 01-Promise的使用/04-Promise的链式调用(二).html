@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //进化1
+    new Promise((resolve, reject) => {
+        //第一次请求
+        setTimeout(() => {
+            resolve('第一次请求')
+        }, 2000)
+    }).then(res => {
+        console.log(res);
+
+        return Promise.resolve(res+'第二次请求')
+        // setTimeout(() => {
+        //     return Promise.resolve(res+'第二次请求')
+        //     //return Promise.resolve(res + '222')
+        // }, 2000)
+    }).then(res => {
+        console.log(res);
+        //setTimeout(() => {
+            return Promise.resolve(res+'第三次请求')
+        //}, 2000)
+
+    }).then(res => {
+        console.log(res)
+        //setTimeout(() => {
+            return Promise.resolve(res+'第四次请求')
+        //})
+    }).then(res => {
+        console.log(res);
+    })
+
+    //进化2
+    new Promise((resolve, reject) => {
+        //第一次请求
+        setTimeout(() => {
+            resolve('第一次请求')
+        }, 2000)
+
+    }).then(res => {
+        console.log(res);
+
+        return res+'第二次请求'
+
+    }).then(res => {
+        console.log(res);
+        //throw '这是个错误'
+        return Promise.reject('这是个错误');
+        //return res+'第三次请求'
+    }).then(res => {
+        console.log(res)
+        return res+'第四次请求'
+
+    }).then(res => {
+        console.log(res);
+
+    }).catch(err=>{
+        console.log(err);
+    })
+
+</script>
+</body>
+</html>
